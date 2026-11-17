@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seedream Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Seedream&nbsp;Studio</h1>
+      <p class="sub">Text-to-image · Seedream 4.5 via WaveSpeed</p>
+    </header>
+
+    <form id="form" class="panel">
+      <div class="field">
+        <span class="label">Reference image <span class="opt">(optional)</span></span>
+        <label id="drop" class="drop" for="file">
+          <input type="file" id="file" accept="image/*" hidden />
+          <div id="dropHint" class="drop-hint">
+            <span class="plus">+</span>
+            Click or drop an image to use as a reference
+          </div>
+          <div id="preview" class="preview" hidden>
+            <img id="previewImg" alt="reference preview" />
+            <button type="button" id="removeImg" class="remove" title="Remove">✕</button>
+          </div>
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="label" id="promptLabel">Prompt</span>
+        <textarea id="prompt" rows="4" placeholder="A cinematic ocean wave at sunrise, highly detailed, volumetric light" required></textarea>
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span class="label">Aspect ratio</span>
+          <select id="size">
+            <option value="auto">Auto (match reference)</option>
+            <option value="2048*2048">Square · 1:1 (2048×2048)</option>
+            <option value="2688*2016">Landscape · 4:3 (2688×2016)</option>
+            <option value="2688*1792">Landscape · 3:2 (2688×1792)</option>
+            <option value="2560*1440">Widescreen · 16:9 (2560×1440)</option>
+            <option value="1792*2688">Portrait · 2:3 (1792×2688)</option>
+            <option value="4096*4096">Square 4K (4096×4096)</option>
+          </select>
+        </label>
+        <button type="submit" id="go" class="go">Generate</button>
+      </div>
+    </form>
+
+    <div id="status" class="status" hidden></div>
+
+    <section id="results" class="results"></section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Render Blueprint (optional) — deploy in a few clicks on Render.com.
+# DigitalOcean doesn't read this file; it auto-detects the Dockerfile instead.
+# In Render: New + → "Blueprint" → pick your repo → it reads this file.
+services:
+  - type: web
+    name: seedream-studio
+    runtime: docker
+    plan: free   # "free" sleeps after ~15 min idle; "starter" (~$7/mo) stays awake
+    envVars:
+      - key: WAVESPEED_API_KEY
+        sync: false   # you paste this in the dashboard (kept secret)
+      - key: APP_PASSWORD
+        sync: false   # the login password, set in the dashboard
